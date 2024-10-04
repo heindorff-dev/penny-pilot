@@ -9,7 +9,7 @@ nvm use node
 
 ## Build & Deployment
 - [Docker](https://www.docker.com/)
-- [Github Docker registry](https://ghcr.io)
+- [Github Packages](https://ghcr.io)
 - [Github Actions](https://github.com/features/actions)
 
 ## User Authentication
