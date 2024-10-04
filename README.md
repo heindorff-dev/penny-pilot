@@ -1,57 +1,33 @@
-# React + TypeScript + Vite
+## Setup
 
+Node Version Manager (nvm) is used to install node.js.  
+Found here: [nvm](https://github.com/nvm-sh/nvm)  
+
+nvm --version  
+nvm install node (latest version) OR nvm install xx.xx.xx (specific version)  
+nvm use node  
+
+## Build & Deployment
+- [Docker](https://www.docker.com/)
+- [Github Docker registry](https://ghcr.io)
+- [Github Actions](https://github.com/features/actions)
+
+## User Authentication
+- [Auth0](https://auth0.com/)
+
+## Microservices
+
+### Frontend
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://react.dev/)
-- [Vite](https://vite.dev/)
-- [tailwindcss](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
-test
+- [Vite](https://vite.dev/guide/)
+- [Tailwindcss](https://tailwindcss.com/docs/installation)
+- [shadcn/ui](https://ui.shadcn.com/docs/installation/vite)
 
+### Backend
+- [Golang](https://go.dev/)
+- [gocql](https://pkg.go.dev/github.com/gocql/gocql)
+- [go-chi](https://go-chi.io/#/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Database 
+- [Apache Cassandra](https://cassandra.apache.org/)
