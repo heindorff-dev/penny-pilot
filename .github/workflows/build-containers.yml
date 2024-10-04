@@ -1,15 +1,13 @@
-name: Docker Compose Action
-
 on: [push]
 
 jobs:
-  build:
+  client_hello_world:
     runs-on: ubuntu-latest
-
+    name: Tests a client by running a docker compose
+    container: docker
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Run docker-compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "./docker-compose.yml"
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Builds the docker composed image"
+        id: build
+        run: docker compose build
