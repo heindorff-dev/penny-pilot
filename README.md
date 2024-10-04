@@ -9,6 +9,8 @@ nvm use node
 
 Auth0 setup: https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa/react-typescript/standard-library-golang  
 
+# Tech Stack
+
 ## Build & Deployment
 - [Docker](https://www.docker.com/)
 - [Github Packages](https://ghcr.io)
