@@ -1,7 +1,7 @@
 services:
  client:
    build:
-     context: ./penny-pilot-client
+     context: ./client
    container_name: penny-pilot-client
    restart: always
    ports:
@@ -13,7 +13,7 @@ services:
 
  api:
   build:
-    context: ./penny-pilot-api
+    context: ./api
   container_name: penny-pilot-api
   restart: always
   ports: 
