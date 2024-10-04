@@ -29,8 +29,8 @@ services:
     - 9042:9042
     - 9160:9160
   environment:
-    - cassandra_user={{ secrets.cassandra-user}}
-    - cassandra_password={{ secrets.cassandra-password }}
+    - cassandra_user={{ secrets.CASSANDRA_USER}}
+    - cassandra_password={{ secrets.CASSANDRA_PASSWORD }}
   volumes:
   - cassandra-data:/var/lib/cassandra
 
