@@ -1,16 +1,11 @@
-version: "3.9"
 services:
  client:
    build:
      context: ./client
-     dockerfile: Dockerfile
    container_name: penny-pilot-client
    restart: always
    ports:
      - 3000:3000
-   volumes:
-     - ./client:/app
-     - /app/node_modules
    environment:
      - VITE_APP_BACKEND_ADDRESS=http://localhost:3001/api
    networks:
@@ -19,13 +14,10 @@ services:
  api:
   build:
     context: ./api
-    dockerfile: Dockerfile
   container_name: penny-pilot-api
   restart: always
   ports: 
     - 3001:3001
-  volumes: 
-    - ./api:/app
   networks:
     - network
    
