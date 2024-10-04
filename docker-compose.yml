@@ -20,6 +20,22 @@ services:
     - 3001:3001
   networks:
     - network
+
+ cassandra:
+  image: cassandra:5.0
+  container_name: penny-pilot-cassandra
+  ports:
+    - 3002:3002
+    - 9042:9042
+    - 9160:9160
+  environment:
+    - cassandra_user={{ secrets.cassandra-user}}
+    - cassandra_password={{ secrets.cassandra-password }}
+  volumes:
+  - cassandra-data:/var/lib/cassandra
+
+volumes:
+  cassandra-data:
    
 networks:
  network:
