@@ -7,6 +7,8 @@ nvm --version
 nvm install node (latest version) OR nvm install xx.xx.xx (specific version)  
 nvm use node  
 
+Auth0 setup: https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa/react-typescript/standard-library-golang  
+
 ## Build & Deployment
 - [Docker](https://www.docker.com/)
 - [Github Packages](https://ghcr.io)
