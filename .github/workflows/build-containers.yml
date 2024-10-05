@@ -8,18 +8,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Github Auth
+        run: docker login ghcr.io -u heindorff-dev -p ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build Compose Images
         run: docker compose -f docker-compose.yml build
 
-      - name: Github Auth
-        run: docker login ghcr.io -u heindorff-dev -p ${{ secrets.GITHUB_TOKEN }}
-        
       - name: Tag Client
-        run: docker tag penny-pilot-client ghcr.io/dev/penny-pilot-client:latest
+        run: docker tag penny-pilot-client ghcr.io/heindorff-dev/penny-pilot-client:latest
 
       - name: Tag API
-        run: docker tag penny-pilot-api ghcr.io/dev/penny-pilot-api:latest
+        run: docker tag penny-pilot-api ghcr.io/heindorff-dev/penny-pilot-api:latest
 
       - name: Push Client
         run: docker push ghcr.io/heindorff-dev/penny-pilot-client:latest
