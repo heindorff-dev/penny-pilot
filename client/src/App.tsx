@@ -26,6 +26,7 @@ function App() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      
       <Routes>
         <Route path="/" element={<HomePage/>}/> {/* 👈 Renders at /app/ */}
       </Routes>
