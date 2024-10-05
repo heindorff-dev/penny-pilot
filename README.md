@@ -10,7 +10,7 @@ Penny Pilot is a web service for budget management and expense tracking.
 - [Github Actions](https://github.com/features/actions)
 
 ## User Authentication
-[Auth0](https://auth0.com/)  
+- [Auth0](https://auth0.com/)  
 Configuration: https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa/react-typescript/standard-library-golang  
 
 ## Microservices
