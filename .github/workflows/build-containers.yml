@@ -27,11 +27,14 @@ jobs:
       - name: Tag API
         run: docker tag penny-pilot-api ghcr.io/heindorff-dev/penny-pilot-api:latest
 
+      - name: Tag Database
+        run: docker tag cassandra ghcr.io/heindorff-dev/penny-pilot-cassandra:latest
+
       - name: Push Client
         run: docker push ghcr.io/heindorff-dev/penny-pilot-client:latest
 
       - name: Push API
         run: docker push ghcr.io/heindorff-dev/penny-pilot-api:latest
 
-
-          
+      - name: Tag Database
+        run: docker push ghcr.io/heindorff-dev/penny-pilot-cassandra:latest
