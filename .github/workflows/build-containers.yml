@@ -9,18 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Build API docker container
-        uses: docker/build-push-action@v6.9.0
-        with:
-          file: ./api/Dockerfile
-          context: .
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          tag: latest
-
-      - name: Build Client docker container
-        uses: docker/build-push-action@v6.9.0
-        with:
-          file: client/Dockerfile
-          github-token: ${{secrets.GITHUB_TOKEN}}
+      - name: Build Compose Images
+        run: docker compose -f docker-compose.yaml build
+        
+      - name: Push image to Container Registry
+        run: docker compose -f docker-compose.yaml push
 
           
