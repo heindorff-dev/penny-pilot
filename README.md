@@ -1,13 +1,6 @@
-## Setup
+# Penny Pilot
 
-Node Version Manager (nvm) is used to install node.js.  
-Found here: [nvm](https://github.com/nvm-sh/nvm)  
-
-nvm --version  
-nvm install node (latest version) OR nvm install xx.xx.xx (specific version)  
-nvm use node  
-
-Auth0 setup: https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa/react-typescript/standard-library-golang  
+Penny Pilot is a web service for budget management and expense tracking.  
 
 # Tech Stack
 
@@ -17,7 +10,8 @@ Auth0 setup: https://developer.auth0.com/resources/code-samples/full-stack/hello
 - [Github Actions](https://github.com/features/actions)
 
 ## User Authentication
-- [Auth0](https://auth0.com/)
+[Auth0](https://auth0.com/)  
+Configuration: https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa/react-typescript/standard-library-golang  
 
 ## Microservices
 
