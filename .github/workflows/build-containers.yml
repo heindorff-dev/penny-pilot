@@ -13,16 +13,16 @@ jobs:
         run: docker compose -f docker-compose.yml build
         
       - name: Tag Client
-        run: docker tag penny-pilot-client ghcr.io/penny-pilot-client:latest
+        run: docker tag penny-pilot-client ghcr.io/dev/penny-pilot-client:latest
 
       - name: Tag API
-        run: docker tag penny-pilot-api ghcr.io/penny-pilot-api:latest
+        run: docker tag penny-pilot-api ghcr.io/dev/penny-pilot-api:latest
 
       - name: Push Client
-        run: docker push ghcr.io/penny-pilot-client:latest
+        run: docker push ghcr.io/dev/penny-pilot-client:latest
 
       - name: Push API
-        run: docker push ghcr.io/penny-pilot-api:latest
+        run: docker push ghcr.io/dev/penny-pilot-api:latest
 
 
           
