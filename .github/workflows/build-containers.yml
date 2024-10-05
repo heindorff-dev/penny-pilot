@@ -1,24 +1,37 @@
 name: Docker Compose Action
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Build API docker container
-        uses: docker/build-push-action@v6.9.0
-        with:
-          file: api/Dockerfile
-          github-token: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Build Client docker container
-        uses: docker/build-push-action@v6.9.0
-        with:
-          file: client/Dockerfile
-          github-token: ${{secrets.GITHUB_TOKEN}}
+      - name: Github Auth
+        run: docker login ghcr.io -u heindorff-dev -p ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build Compose Images
+        run: docker compose -f docker-compose.yml build
+
+      - name: Tag Client
+        run: docker tag penny-pilot-client ghcr.io/heindorff-dev/penny-pilot-client:latest
+
+      - name: Tag API
+        run: docker tag penny-pilot-api ghcr.io/heindorff-dev/penny-pilot-api:latest
+
+      - name: Push Client
+        run: docker push ghcr.io/heindorff-dev/penny-pilot-client:latest
+
+      - name: Push API
+        run: docker push ghcr.io/heindorff-dev/penny-pilot-api:latest
+
 
           
