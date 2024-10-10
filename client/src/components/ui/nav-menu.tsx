@@ -16,7 +16,7 @@ export default function NavMenu() {
 
   const menuItems = [
     { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
+    { to: "/login", label: "Login" },
     { to: "/services", label: "Services" },
     { to: "/contact", label: "Contact" },
   ]
@@ -27,7 +27,7 @@ export default function NavMenu() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <NavLink to="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-primary">Logo</span>
+              <span className="text-2xl font-bold text-primary">Penny Pilot</span>
             </NavLink>
           </div>
           <div className="hidden md:block">
