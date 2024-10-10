@@ -29,6 +29,15 @@ var expenses = []Expense{
 	},
 }
 
+func GetExpenseById(id uuid.UUID) (e *Expense, err error) {
+	for _, expense := range expenses {
+		if expense.Id == id {
+			return &expense, nil
+		}
+	}
+	return nil, errors.New("could not find expense")
+}
+
 func GetExpense(name string) (e *Expense, err error) {
 	expense, err := getFromDB(name)
 	return expense, err
