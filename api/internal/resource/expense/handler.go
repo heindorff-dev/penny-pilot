@@ -1,4 +1,4 @@
-package route
+package expense
 
 import (
 	"api/service"
@@ -8,19 +8,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func RegisterRoutes(router *gin.Engine) {
-	expense := router.Group("/api/v1/expenses")
-	{
-		expense.GET("/:id", func(ctx *gin.Context) {
-			getExpense(ctx)
-		})
-		expense.GET("/", func(ctx *gin.Context) {
-			getExpenses(ctx)
-		})
-	}
-}
-
-func getExpense(ctx *gin.Context) {
+func GetExpense(ctx *gin.Context) {
 	id := ctx.Param("id")
 	parsed, err := uuid.Parse(id)
 
@@ -39,7 +27,7 @@ func getExpense(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, expense)
 }
 
-func getExpenses(ctx *gin.Context) {
+func GetExpenses(ctx *gin.Context) {
 	name := ctx.Query("name")
 	expense, err := service.GetExpense(name)
 

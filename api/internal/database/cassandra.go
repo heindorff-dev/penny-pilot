@@ -21,7 +21,7 @@ func getClusterConfig() *gocql.ClusterConfig {
 	return cluster
 }
 
-func GetSession() (*gocql.Session, *Error) {
+func GetSession() (*gocql.Session, error) {
 
 	cluster := getClusterConfig()
 	session, err := cluster.CreateSession()
@@ -33,7 +33,7 @@ func GetSession() (*gocql.Session, *Error) {
 }
 
 func GetExpenses() {
-	session := GetSession()
+	session, err := GetSession()
 	ctx := context.Background()
 	scanner := session.Query("SELECT id, name, amount FROM Expense").WithContext(ctx).Iter().Scanner()
 
