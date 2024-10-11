@@ -20,11 +20,11 @@ func New() *gin.Engine {
 
 	//Expenses
 	expenses := r.Group("api/v1/expenses")
-	expenses.GET("/:id", func(ctx *gin.Context) {
-		expense.GetExpense(ctx)
+	expenses.GET("/:id", func(c *gin.Context) {
+		expense.GetExpense(c)
 	})
-	expenses.GET("/", func(ctx *gin.Context) {
-		expense.GetExpenses(ctx)
+	expenses.GET("/", func(c *gin.Context) {
+		expense.GetExpenses(c)
 	})
 
 	return r

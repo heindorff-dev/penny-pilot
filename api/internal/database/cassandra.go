@@ -1,13 +1,12 @@
 package database
 
 import (
-	"context"
-	"fmt"
-	"log"
 	"os"
 
 	"github.com/gocql/gocql"
 )
+
+var Session *gocql.Session
 
 func getClusterConfig() *gocql.ClusterConfig {
 	cluster := gocql.NewCluster(os.Getenv("CONNECTION_STRING"))
@@ -21,34 +20,11 @@ func getClusterConfig() *gocql.ClusterConfig {
 	return cluster
 }
 
-func GetSession() (*gocql.Session, error) {
-
+func MustInit() {
+	var err error
 	cluster := getClusterConfig()
-	session, err := cluster.CreateSession()
+	Session, err = cluster.CreateSession()
 	if err != nil {
-		log.Fatal(err)
-		return session, err
-	}
-	return session, nil
-}
-
-func GetExpenses() {
-	session, err := GetSession()
-	ctx := context.Background()
-	scanner := session.Query("SELECT id, name, amount FROM Expense").WithContext(ctx).Iter().Scanner()
-
-	var id gocql.UUID
-	var name string
-	var amount int
-
-	for scanner.Next() {
-		err = scanner.Scan(&id, &name, &amount)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println("Expense:", id, name, amount)
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }

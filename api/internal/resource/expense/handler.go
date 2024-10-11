@@ -1,12 +1,21 @@
 package expense
 
 import (
+	"api/internal/database"
 	"api/service"
+	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )
+
+type Expense struct {
+	Amount int       `json:"amount"`
+	Name   string    `json:"name"`
+	Id     uuid.UUID `json:"id"`
+}
 
 func GetExpense(ctx *gin.Context) {
 	id := ctx.Param("id")
@@ -27,14 +36,39 @@ func GetExpense(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, expense)
 }
 
-func GetExpenses(ctx *gin.Context) {
-	name := ctx.Query("name")
-	expense, err := service.GetExpense(name)
+func GetExpenses(c *gin.Context) {
+	var (
+		queryParamName = c.Query("name")
+		expenses       = []Expense{}
+		id             uuid.UUID
+		name           string
+		amount         int
+		err            error
+	)
+
+	query := "SELECT id, name, amount FROM Expense where name LIKE %" + queryParamName + "%"
+
+	fmt.Println("query: ", query)
+
+	scanner := database.Session.Query(query).WithContext(c).Iter().Scanner()
+
+	for scanner.Next() {
+		err = scanner.Scan(&id, &name, &amount)
+		if err != nil {
+			log.Fatal(err)
+		}
+		expense := Expense{
+			Id:     id,
+			Name:   name,
+			Amount: amount,
+		}
+		expenses = append(expenses, expense)
+	}
 
 	if err != nil {
-		ctx.JSON(http.StatusOK, gin.H{"message": err.Error()})
+		c.JSON(http.StatusOK, gin.H{"message": err.Error()})
 		return
 	}
 
-	ctx.JSON(http.StatusOK, expense)
+	c.JSON(http.StatusOK, expenses)
 }
