@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 
 # Build
-RUN go build -o /penny-pilot-api ./cmd 
+RUN go build -o /penny-pilot-api .
 
 EXPOSE 3001
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"api/database"
 	"api/route"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,8 @@ func main() {
 	route.RegisterRoutes(router)
 
 	router.Use(gin.Logger())
+
+	database.Init()
 
 	router.Run(":3001")
 }

@@ -2,7 +2,7 @@ services:
  client:
    build:
      context: ./client
-   container_name: penny-pilot-client
+   container_name: client
    restart: always
    ports:
      - 3000:3000
@@ -14,23 +14,31 @@ services:
  api:
   build:
     context: ./api
-  container_name: penny-pilot-api
+  container_name: api
+  rpc_address: cassandra
   restart: always
   ports: 
     - 3001:3001
+  environment:
+    - CONNECTION_STRING={{ secrets.API_CONNECTION_STRING }}
+    - CASSANDRA_KEYSPACE={{ secrets.KEYSPACE }}
+    - CASSANDRA_USER={{ secrets.CASSANDRA_USER }}
+    - CASSANDRA_PASSWORD={{ secrets.CASSANDRA_PASSWORD }}
   networks:
     - network
 
  cassandra:
+  build:
+    context: ./database
   image: cassandra:5.0
-  container_name: penny-pilot-cassandra
+  container_name: cassandra
   ports:
     - 3002:3002
     - 9042:9042
     - 9160:9160
   environment:
-    - cassandra_user={{ secrets.CASSANDRA_USER}}
-    - cassandra_password={{ secrets.CASSANDRA_PASSWORD }}
+    - CASSANDRA_USER={{ secrets.CASSANDRA_USER }}
+    - CASSANDRA_PASSWORD={{ secrets.CASSANDRA_PASSWORD }}
   volumes:
   - cassandra-data:/var/lib/cassandra
 
