@@ -17,7 +17,7 @@ func main() {
 
 	router.Use(gin.Logger())
 
-	database.Init()
+	database.GetSession()
 
 	router.Run(":3001")
 }

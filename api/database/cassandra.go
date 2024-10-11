@@ -21,17 +21,20 @@ func getClusterConfig() *gocql.ClusterConfig {
 	return cluster
 }
 
-func Init() {
+func GetSession() (*gocql.Session, *Error) {
 
 	cluster := getClusterConfig()
 	session, err := cluster.CreateSession()
 	if err != nil {
 		log.Fatal(err)
+		return session, err
 	}
-	defer session.Close()
+	return session, nil
+}
 
+func GetExpenses() {
+	session := GetSession()
 	ctx := context.Background()
-
 	scanner := session.Query("SELECT id, name, amount FROM Expense").WithContext(ctx).Iter().Scanner()
 
 	var id gocql.UUID
