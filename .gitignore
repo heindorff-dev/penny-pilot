@@ -1,6 +1,7 @@
 # Local dev files
 docker-commands.txt
 v0.txt
+.env
 
 # Logs
 logs
