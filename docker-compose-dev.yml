@@ -1,0 +1,55 @@
+services:
+
+ client:
+   build:
+     context: ./client
+   container_name: client
+   restart: always
+   ports:
+     - 3000:3000
+   environment:
+     - VITE_APP_BACKEND_ADDRESS=http://localhost:3001/api
+   networks:
+     - network
+
+ api:
+  build:
+    context: ./api
+  container_name: api
+  restart: always
+  ports: 
+    - 3001:3001
+  depends_on:
+    - cassandra
+  networks:
+    - network
+  environment:
+    - CONNECTION_STRING=cassandra
+    - CASSANDRA_KEYSPACE=penny_pilot
+    - CASSANDRA_USER=admin
+    - CASSANDRA_PASSWORD=admin
+
+ cassandra:
+  image: cassandra:5.0
+  container_name: cassandra
+  ports:
+    - 3002:3002
+    - 9042:9042
+    - 9160:9160
+  volumes:
+    - cassandra-data:/var/lib/cassandra
+  networks:
+    - network
+  environment:
+    - CASSANDRA_RPC_ADDRESS=cassandra
+    - CASSANDRA_BROADCAST_RPC_ADDRESS=cassandra
+    - CASSANDRA_USER=admin
+    - CASSANDRA_PASSWORD=admin
+    - CASSANDRA_MATERIALIZED_VIEWS_ENABLED=true
+    - CASSANDRA_SASI_INDEXES_ENABLED=true
+
+volumes:
+  cassandra-data:
+   
+networks:
+ network:
