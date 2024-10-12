@@ -1,5 +1,6 @@
 # Local dev files
 docker-commands.txt
+docker-compose.dev.yml
 v0.txt
 .env
 

@@ -25,8 +25,9 @@ func New(a *auth.Authenticator) *gin.Engine {
 	gob.Register(map[string]interface{}{})
 	store := cookie.NewStore([]byte("secret"))
 	r.Use(sessions.Sessions("auth-session", store))
-	r.Static("/public", "web/static")
-	r.LoadHTMLGlob("web/template/*")
+
+	//r.Static("/public", "web/static")
+	//r.LoadHTMLGlob("web/template/*")
 
 	r.GET("api/v1/login", login.Handler(a))
 	r.GET("api/v1/callback", callback.Handler(a))

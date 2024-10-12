@@ -3,6 +3,7 @@ package auth
 import (
 	"context"
 	"errors"
+	"fmt"
 	"os"
 
 	"github.com/coreos/go-oidc/v3/oidc"
@@ -17,11 +18,13 @@ type Authenticator struct {
 
 // New instantiates the *Authenticator.
 func New() (*Authenticator, error) {
+	fmt.Println(os.Getenv("AUTH0_DOMAIN"))
 	provider, err := oidc.NewProvider(
 		context.Background(),
 		"https://"+os.Getenv("AUTH0_DOMAIN")+"/",
 	)
 	if err != nil {
+		fmt.Println(err.Error())
 		return nil, err
 	}
 
