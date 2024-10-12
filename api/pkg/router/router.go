@@ -1,7 +1,7 @@
 package router
 
 import (
-	"api/pkg/handlers/expense"
+	"api/pkg/handler/expense"
 
 	jwtmiddleware "github.com/auth0/go-jwt-middleware/v2"
 	"github.com/gin-gonic/gin"
