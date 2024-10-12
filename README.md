@@ -4,14 +4,13 @@ Penny Pilot is a web service for budget management and expense tracking.
 
 # Tech Stack
 
-## Build & Deployment
+## CI/CD
 - [Docker](https://www.docker.com/)
 - [Github Packages](https://ghcr.io)
 - [Github Actions](https://github.com/features/actions)
 
 ## User Authentication
 - [Auth0](https://auth0.com/)  
-Configuration: https://developer.auth0.com/resources/code-samples/full-stack/hello-world/basic-access-control/spa/react-typescript/standard-library-golang  
 
 ## Microservices
 
@@ -24,8 +23,8 @@ Configuration: https://developer.auth0.com/resources/code-samples/full-stack/hel
 
 ### Backend
 - [Golang](https://go.dev/)
+- [Gin](https://gin-gonic.com/)
 - [gocql](https://pkg.go.dev/github.com/gocql/gocql)
-- [go-chi](https://go-chi.io/#/)
 
 ### Database 
 - [Apache Cassandra](https://cassandra.apache.org/)
