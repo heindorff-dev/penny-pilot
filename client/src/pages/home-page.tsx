@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { Auth0Features } from "@/components/auth0-features";
 
 export default function HomePage() {
     return (
-        <div>
-            <Button>HomePage Button</Button>
-        </div>
+        <Auth0Features />
     )
 }

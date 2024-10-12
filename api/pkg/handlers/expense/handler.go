@@ -1,7 +1,7 @@
 package expense
 
 import (
-	"api/internal/database"
+	"api/pkg/database"
 	"log"
 	"net/http"
 
