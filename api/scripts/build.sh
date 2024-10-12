@@ -1,0 +1,1 @@
+docker build . -t penny-pilot-client:latest

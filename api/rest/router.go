@@ -1,7 +1,7 @@
 package router
 
 import (
-	"api/internal/resource/expense"
+	"api/rest/handlers/expense"
 
 	"github.com/gin-gonic/gin"
 )

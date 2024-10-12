@@ -1,7 +1,9 @@
 package database
 
 import (
+	"log"
 	"os"
+	"time"
 
 	"github.com/gocql/gocql"
 )
@@ -20,11 +22,15 @@ func getClusterConfig() *gocql.ClusterConfig {
 	return cluster
 }
 
-func MustInit() {
+func Init() {
 	var err error
 	cluster := getClusterConfig()
-	Session, err = cluster.CreateSession()
-	if err != nil {
-		panic(err)
+	for {
+		Session, err = cluster.CreateSession()
+		if err == nil {
+			break
+		}
+		log.Printf("CreateSession: %v", err)
+		time.Sleep(time.Second)
 	}
 }

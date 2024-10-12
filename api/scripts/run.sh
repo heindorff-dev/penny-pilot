@@ -1,0 +1,1 @@
+docker run -d -it --rm penny-pilot-client:latest

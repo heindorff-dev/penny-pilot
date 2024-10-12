@@ -33,9 +33,7 @@ services:
   image: cassandra:5.0
   container_name: cassandra
   ports:
-    - 3002:3002
     - 9042:9042
-    - 9160:9160
   volumes:
     - cassandra-data:/var/lib/cassandra
   networks:

@@ -2,11 +2,11 @@ package main
 
 import (
 	"api/internal/database"
-	"api/internal/router"
+	router "api/rest"
 )
 
 func main() {
-	database.MustInit()
+	database.Init()
 	cassandraSession := database.Session
 	defer cassandraSession.Close()
 	r := router.New()
