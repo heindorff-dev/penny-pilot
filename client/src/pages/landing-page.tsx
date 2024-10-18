@@ -1,9 +1,9 @@
 import { PageLayout } from "@/components/page-layout";
 
-export default function HomePage() {
+export default function LandingPage() {
     return (
         <PageLayout>
-            <p>Home!</p>
+            <p>Welcome to my site! </p>
         </PageLayout>
         
     )
